@@ -50,6 +50,11 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.auth.basicauth.users=admin:$$2y$$05$$0LmEaZ57.5eAq196BHcvY.DdlFkxd4pXMM9/XXqySzNHlvTgnYzZiß"
+      - "traefik.http.routers.dashboard.middlewares=auth"
+    
 
   flask_api:
     build: ./flask-api
